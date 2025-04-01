@@ -103,7 +103,7 @@ const loginUser = async (req, h) => {
 
 const runPythonScript = (scriptPath, args = []) => {
   return new Promise((resolve, reject) => {
-    const process = spawn("python", [scriptPath, ...args]);
+    const process = spawn("python3", [scriptPath, ...args]);
 
     let result = "";
     process.stdout.on("data", (data) => {
