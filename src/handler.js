@@ -128,7 +128,7 @@ const runPythonScript = (scriptPath, args = []) => {
 
 const getAllPlaces = async (req, h) => {
   try {
-    const scriptPath = path.join(__dirname, "../../ml/RestApi/get_places.py");
+    const scriptPath = path.join(__dirname, "../RestApi/get_places.py");
     const places = await runPythonScript(scriptPath);
     return h.response({ status: "success", data: places }).code(200);
   } catch (error) {
@@ -141,7 +141,7 @@ const getAllPlaces = async (req, h) => {
 const getPlaceById = async (req, h) => {
   try {
     const { id } = req.params;
-    const scriptPath = path.join(__dirname,"../../ml/RestApi/get_place_by_id.py");
+    const scriptPath = path.join(__dirname,"../RestApi/get_place_by_id.py");
     const place = await runPythonScript(scriptPath, [id]);
 
     if (!place) {
@@ -159,7 +159,7 @@ const getPlaceById = async (req, h) => {
 const getRecommendedPlaces = async (req, h) => {
   try {
     const { place_id } = req.params;
-    const scriptPath = path.join(__dirname, "../../ml/RestApi/recommendation.py");
+    const scriptPath = path.join(__dirname, "../ml/RestApi/recommendation.py");
     const recommendations = await runPythonScript(scriptPath, [place_id]);
 
     return h.response({ status: "success", data: recommendations }).code(200);
